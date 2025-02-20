@@ -10,10 +10,10 @@ def fetch_news(request):
     API_URL += f"?q={q}&category={category}&apikey={API_KEY}"
 
     response = requests.get(API_URL)
-    print(response.url)
-    print(response.status_code)
-    print(response.text)
-    print(response.json().get('results'))
+    # print(response.url)
+    # print(response.status_code)
+    # print(response.text)
+    # print(response.json().get('results'))
     news_data = response.json().get('results')
 
     return render(request, 'home.html', {'news': news_data})
