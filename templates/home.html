@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .news-item {
+            background: #ffffff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .news-item a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .news-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Search News</h2>
+        <form method="get" action = "">
+            <input type="text" name="q" placeholder="Enter country name">
+            <select name="category">
+                <option value="">Select Category</option>
+                <option value="business" >Business</option>
+                <option value="sports" >Sports</option>
+                <option value="entertainment" >Entertainment</option>
+                <option value="top" >Top</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+        {% for news_data in news %}
+            <div class="news-item">
+                <h3>Country : {{news_data.country}}</h3>
+                <h3>Category : {{ news_data.category }}</h3>
+                <h1>Article : <br>{{ news_data.title }}</h1><br>
+                <p>content : {{ news_data.description }}</p>
+                <p>Source : {{ news_data.link }}</p>
+                <p>Source Name : {{ news_data.source_name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
